@@ -20,16 +20,6 @@ public class Role extends Basic {
     @Column(nullable = false)
     private String roleName;
 
-//    @OneToOne(mappedBy = "role")
-//    private User user;
-//
-//    @ManyToMany(mappedBy = "role")
-//    private List<User> userList;
-
-//    @ManyToOne
-//    @JoinColumn (name = "userId", insertable = false, updatable = false)
-//    private User user;
-
     @OneToMany(mappedBy = "role", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<User> userList = new ArrayList<>();
 

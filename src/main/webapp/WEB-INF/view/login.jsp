@@ -1,7 +1,19 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<c:choose>
+    <c:when test="${sessionScope.locale.toString() == 'ru_KZ'}">
+        <fmt:setLocale value="ru_KZ"/>
+    </c:when>
+    <c:otherwise>
+        <fmt:setLocale value="en_US"/>
+    </c:otherwise>
+</c:choose>
+<fmt:setBundle basename="locale"/>
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -9,7 +21,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> <spring:message code="logIn"/></title>
+    <title> <fmt:message key="logIn"/></title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -23,30 +35,30 @@
 <body class="text-center">
 <form:form method="POST" action="/login" class="form-signin">
 
-    <c:if test="${logout}">
-    <div class="alert alert-info" role="alert">
-        <spring:message code="successLogout"/>
-    </div>
-    </c:if>
+    <%--<c:if test="${logout}">--%>
+    <%--<div class="alert alert-info" role="alert">--%>
+        <%--<spring:message code="successLogout"/>--%>
+    <%--</div>--%>
+    <%--</c:if>--%>
 
-    <c:if test="${error}">
-    <div class="alert alert-danger" role="alert">
-        <spring:message code="invalidUsernameOrPassword"/>
-    </div>
-    </c:if>
-    <h1 class="h3 mb-3 font-weight-normal"><spring:message code="logIn"/></h1>
+    <%--<c:if test="${error}">--%>
+    <%--<div class="alert alert-danger" role="alert">--%>
+        <%--<spring:message code="invalidUsernameOrPassword"/>--%>
+    <%--</div>--%>
+    <%--</c:if>--%>
+    <h1 class="h3 mb-3 font-weight-normal"><fmt:message key="logIn"/></h1>
     <div class="form-group">
-        <label for="formGroupExampleInput"><spring:message code="username"/></label>
+        <label for="formGroupExampleInput"><fmt:message key="username"/></label>
         <input type="text" name="username" class="form-control" id="formGroupExampleInput">
     </div>
     <div class="form-group">
-        <label for="formGroupExampleInput2"><spring:message code="password"/></label>
+        <label for="formGroupExampleInput2"><fmt:message key="password"/></label>
         <input type="password" name="password" class="form-control" id="formGroupExampleInput2">
     </div>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit"><spring:message code="logIn"/></button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="logIn"/></button>
     <br>
-    <h4 class="text-center"><a href="/registrationPage"><spring:message code="registration"/></a></h4>
+    <h4 class="text-center"><a href="/registrationPage"><fmt:message key="registration"/></a></h4>
     <p class="mt-5 mb-3 text-muted">&copy;2018</p>
 </form:form>
 

@@ -41,7 +41,7 @@
                 <tbody>
                 <tr>
                     <br>
-                    <textarea name="title"  class="form-control mr-sm-2" placeholder="<fmt:message key="brief"/>"required></textarea>
+                    <textarea name="title"  class="form-control mr-sm-2" placeholder="<fmt:message key="title"/>"required></textarea>
                 </tr>
                 <tr>
                     <br>

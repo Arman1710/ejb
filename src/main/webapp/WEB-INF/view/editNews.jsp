@@ -49,7 +49,6 @@
                 <tr>
                     <br>
                     <textarea name="content" cols="30" rows="10" class="form-control mr-sm-2" placeholder="<fmt:message key="content"/>" required>${news.content}</textarea>
-
                 </tr>
                 <tr>
                     <br>

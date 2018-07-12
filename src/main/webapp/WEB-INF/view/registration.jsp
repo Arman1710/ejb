@@ -1,4 +1,17 @@
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<c:choose>
+    <c:when test="${sessionScope.locale.toString() == 'ru_KZ'}">
+        <fmt:setLocale value="ru_KZ"/>
+    </c:when>
+    <c:otherwise>
+        <fmt:setLocale value="en_US"/>
+    </c:otherwise>
+</c:choose>
+<fmt:setBundle basename="locale"/>
 <html>
 <head>
     <meta charset="utf-8">
@@ -6,7 +19,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title><spring:message code="registration"/></title>
+    <title><fmt:message key="registration"/></title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
           integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -18,35 +31,21 @@
 
 <body class="text-center">
 
-<form:form modelAttribute="user" method="POST" action="/registration" class="form-signin">
-    <h1 class="h3 mb-3 font-weight-normal"><spring:message code="logIn"/></h1>
-    <spring:bind path="username">
-        <input name="username" type="text" class="form-control" placeholder="<spring:message code="username"/>" required
+<form:form method="POST" action="/registration" class="form-signin">
+    <h1 class="h3 mb-3 font-weight-normal"><fmt:message key="logIn"/></h1>
+
+        <input name="username" type="text" class="form-control" placeholder="<fmt:message key="username"/>" required
                autofocus>
-        <div style="color:red">
-            <form:errors path="username"/>
-        </div>
-    </spring:bind>
 
-    <spring:bind path="password">
-        <input name="password" type="password" class="form-control" placeholder="<spring:message code="password"/>"
+        <input name="password" type="password" class="form-control" placeholder="<fmt:message key="password"/>"
                required>
-        <div style="color:red">
-            <form:errors path="password"/>
-        </div>
-    </spring:bind>
 
-    <spring:bind path="confirmPassword">
         <input name="confirmPassword" type="password" class="form-control"
-               placeholder="<spring:message code="confirmPassword"/>" required>
-        <div style="color:red">
-            <form:errors path="confirmPassword"/>
-        </div>
-    </spring:bind>
+               placeholder="<fmt:message key="confirmPassword"/>" required>
 
-    <button class="btn btn-lg btn-primary btn-block" type="submit"><spring:message code="registration"/></button>
+    <button class="btn btn-lg btn-primary btn-block" type="submit"><fmt:message key="registration"/></button>
     <br>
-    <h4 class="text-center"><a href="/login"><spring:message code="logIn"/></a></h4>
+    <h4 class="text-center"><a href="/login"><fmt:message key="logIn"/></a></h4>
     <p class="mt-5 mb-3 text-muted">&copy;2018</p>
 </form:form>
 
